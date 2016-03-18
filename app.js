@@ -1,19 +1,29 @@
 // TODO
 var groceryItems = ['Milk', 'Chia', 'Tofu'];
 
-var GroceryList = (props) => {
+class GroceryListItem extends React.Component {
 
-  var onListItemClick = (event) => {
-    console.log('Buy this!');
-  };
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <li>{this.props.items}</li>
+    );
+  }
+
+}
+
+var GroceryList = (props) => {
 
   return (
     <div>
     <h2>My Grocery List</h2>
       <ul>
-        <li onClick={onListItemClick}>{props.items[0]}</li>
-        <li>{props.items[1]}</li>
-        <li>{props.items[2]}</li>
+      {props.items.map(item =>
+        <GroceryListItem items={item} />
+        )}
       </ul>
     </div>
   );  
